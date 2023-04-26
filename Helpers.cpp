@@ -21,11 +21,13 @@ auto uniqueLines( std::istream& inStream ) {
    std::string line;
    std::set<std::string> lSet;
    while ( std::getline( inStream, line ) ) {
-      auto beginIndex = line.begin() + line.find_first_not_of( spaces );
-      auto endIndex = line.begin() + line.find_last_not_of( spaces ) + 1;
-      if ( ( endIndex - beginIndex ) > 1 ) {
-         lSet.insert( { beginIndex, endIndex } );
-      }
+     if(line.size()) {
+        auto beginIndex = line.begin() + line.find_first_not_of( spaces );
+        auto endIndex = line.begin() + line.find_last_not_of( spaces ) + 1;
+        if ( ( endIndex - beginIndex ) > 1 ) {
+           lSet.insert( { beginIndex, endIndex } );
+        }
+     }
    }
 
    return lSet;
